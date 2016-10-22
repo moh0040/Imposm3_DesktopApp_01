@@ -626,8 +626,9 @@ public class MyFrame extends javax.swing.JFrame {
                 int exitVal = pr.waitFor();
                 System.out.println("Exited with error code "+exitVal);
                 jTextArea2.setText("Exited with error code "+exitVal);
+                String note =jTextArea2.getText();
             
-                JOptionPane.showMessageDialog(null,"Data sent successfully to postgis");
+                JOptionPane.showMessageDialog(null,"Report: "+note);
                 jButton5.setBackground(Color.green);
                 jButton3.setBackground(Color.green);
                 
