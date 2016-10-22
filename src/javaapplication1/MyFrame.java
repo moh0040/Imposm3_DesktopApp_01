@@ -121,6 +121,8 @@ public class MyFrame extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("IMPO");
+        setResizable(false);
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -291,6 +293,8 @@ public class MyFrame extends javax.swing.JFrame {
         jTabbedPane1.addTab("Import", jPanel3);
 
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("import .jsom file"));
+
+        jTextField3.setEditable(false);
 
         jLabel7.setText("File name:");
 
