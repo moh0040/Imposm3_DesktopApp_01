@@ -20,6 +20,9 @@ import javax.swing.Timer;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JProgressBar;
 
 
@@ -610,62 +613,73 @@ public class MyFrame extends javax.swing.JFrame {
 
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       //timer.start();
-    int a = 100;
-       jProgressBar1.setValue(a);
       
-      
+       //jProgressBar1.setVisible(true);
+        jProgressBar1.setIndeterminate(true);
         
-        jTextArea1.setText(jTextField1.getText()+" import -mapping "+jTextField3.getText()+" -read "+jTextField2.getText()+" -overwritecache -write -connection "+"postgis://"+jTextField6.getText()+":"+jPasswordField1.getText()+"@"+jTextField4.getText()+"/"+jTextField5.getText());
-      
-        String script = jTextArea1.getText();
-        System.out.println(script);
-        
-           try {
-                Runtime rt = Runtime.getRuntime();
-                //Process pr = rt.exec("cmd /c dir");
-                
-                
-                Process pr = rt.exec(script);
- 
-                BufferedReader input = new BufferedReader(new InputStreamReader(pr.getInputStream()));
- 
-                String line=null;
- 
-                while((line=input.readLine()) != null) {
-                    System.out.println(line);
-                    //it is work but not like consol in netbeans and cmd and it is shown in horizontal -----
-                    //jTextArea2.append(line.toString());
-                    
-                }
-                
- 
-                int exitVal = pr.waitFor();
-                System.out.println("Exited with error code "+exitVal);
-                jTextArea2.setText("Exited with error code "+exitVal);
-                String note =jTextArea2.getText();
+   
+            //TimeUnit.SECONDS.sleep(10);
+  
+        try {
+            //timer.start();
+    
+            String a = jTextField1.getText();
+            String b = jTextField3.getText();
+            String c = jTextField2.getText();
+            String d = jTextField6.getText();
+            String e = jPasswordField1.getText();
+            String f = jTextField4.getText();
+            String g = jTextField5.getText();
             
-                JOptionPane.showMessageDialog(null,"Report: "+note);
-                jButton5.setBackground(Color.green);
-                jButton3.setBackground(Color.green);
+            String total=a+" import -mapping "+b+" -read "+c+" -overwritecache -write -connection "+"postgis://"+d+":"+e+"@"+f+"/"+g;
+            jTextArea1.setText(total);
+
+            
+            String script = jTextArea1.getText();
+            System.out.println(script);
+            
+            
+            Runtime rt = Runtime.getRuntime();
+            //Process pr = rt.exec("cmd /c dir");
+            
+            
+            Process pr = rt.exec(script);
+            
+            BufferedReader input = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+            
+            String line=null;
+            
+            while((line=input.readLine()) != null) {
+                System.out.println(line);
+                //it is work but not like consol in netbeans and cmd and it is shown in horizontal -----
+                //jTextArea2.append(line.toString());
                 
- 
-            } catch(Exception e) {
-                System.out.println(e.toString());
-                jTextArea2.setText(e.toString());
-                e.printStackTrace();
             }
-
-                
-                
- 
-
-
-        
-
             
-                
-              
+            
+            int exitVal = pr.waitFor();
+            
+            System.out.println("Exited with error code "+exitVal);
+            jTextArea2.setText("Exited with error code "+exitVal);
+            String note =jTextArea2.getText();
+            
+            JOptionPane.showMessageDialog(null,"Report: "+note);
+            jButton5.setBackground(Color.green);
+            jButton3.setBackground(Color.green);
+            
+            //jProgressBar1.setVisible(false);
+            jProgressBar1.setIndeterminate(false);
+             
+        } catch (IOException ex) {
+            Logger.getLogger(MyFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(MyFrame.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+       
+ 
+           
+
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -715,11 +729,15 @@ public class MyFrame extends javax.swing.JFrame {
         jButton2.setBackground(Color.green);
         
         }
+        
+    
 
         //System.out.println("Selected file: " + selectedFile.getAbsolutePath());}
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       
+        
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -740,6 +758,8 @@ public class MyFrame extends javax.swing.JFrame {
         jButton1.setBackground(Color.green);
         
         }
+        
+
 
         //System.out.println("Selected file: " + selectedFile.getAbsolutePath());}
 
