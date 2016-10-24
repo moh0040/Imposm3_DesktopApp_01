@@ -344,7 +344,7 @@ public class MyFrame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Key"
+                "#", "Key"
             }
         ));
         jScrollPane4.setViewportView(jTable1);
@@ -485,6 +485,7 @@ public class MyFrame extends javax.swing.JFrame {
 
         jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder("Result"));
 
+        jTextArea2.setEditable(false);
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
@@ -507,6 +508,7 @@ public class MyFrame extends javax.swing.JFrame {
 
         jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder("Running Code"));
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
@@ -789,15 +791,14 @@ public class MyFrame extends javax.swing.JFrame {
 
     private void baddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baddActionPerformed
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-
         /* int count=1;
         if(count<10){
             count++;
             System.out.println("fff");
 
         }*/
-
-        model.addRow(new Object[]{Box.getSelectedItem()});
+int number =  jTable1.getModel().getRowCount();
+        model.addRow(new Object[]{number+1,Box.getSelectedItem()});
         jTable1.setModel(model);
 
         // model.addElement(Box.getSelectedItem().toString());
