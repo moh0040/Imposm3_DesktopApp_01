@@ -6,6 +6,9 @@
 package javaapplication1;
 
 import java.io.*;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
  
 public class Main {
  
@@ -16,11 +19,17 @@ public class Main {
 
             java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                MyFrame m = new MyFrame();
-                
-                m.setVisible(true);
-                
-                //new MyFrame().setVisible(true);
+                try {
+                    MyFrame m = new MyFrame();
+                    
+                    m.setVisible(true);
+                    
+                    //new MyFrame().setVisible(true);
+                } catch (ParseException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
             }
             
