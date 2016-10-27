@@ -108,9 +108,9 @@ public class MyFrame extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         Box1 = new javax.swing.JComboBox<>();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jScrollPane6 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         Box2 = new javax.swing.JComboBox<>();
         badd1 = new javax.swing.JButton();
         bdelete1 = new javax.swing.JButton();
@@ -382,7 +382,7 @@ public class MyFrame extends javax.swing.JFrame {
 
         Box1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aerialway", "Aeroway", "Highway", "Public Transport", "Railway", "Route", "Waterway" }));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -398,9 +398,9 @@ public class MyFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane5.setViewportView(jTable2);
+        jScrollPane5.setViewportView(jTable3);
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -416,7 +416,7 @@ public class MyFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane6.setViewportView(jTable3);
+        jScrollPane6.setViewportView(jTable2);
 
         Box2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Amenity", "Barrier", "Boundary", "Building", "Craft", "Historic", "Landuse", "Leisure", "Man Made", "Military", "Natural", "Office", "Places", "Shop", "Sport", "Tourism" }));
 
@@ -1008,19 +1008,69 @@ public class MyFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void badd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_badd1ActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+
+        model.addRow(new Object[]{Box1.getSelectedItem()});
+        jTable2.setModel(model);
+
+        
+        ArrayList<String> data = new ArrayList<String>();
+        for (int count = 0;count<model.getRowCount();count++){
+        
+        data.add(model.getValueAt(count, 1).toString());
+        
+        }
+        System.out.println(data);
+        
+        //int selectedRow = jTable1.getSelectedRow();
+        String setToTextArea = new String();
+        for (int i=0;i<model.getRowCount();i++){
+        
+        setToTextArea += jTable2.getValueAt(i, 1)+"\n";
+       
+        }
     }//GEN-LAST:event_badd1ActionPerformed
 
     private void bdelete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdelete1ActionPerformed
-        // TODO add your handling code here:
+            int row =jTable2.getSelectedRow();
+
+        if (jTable2.getRowCount()>0){
+
+            DefaultTableModel model = (DefaultTableModel)jTable2.getModel();
+            model.removeRow(row);}
     }//GEN-LAST:event_bdelete1ActionPerformed
 
     private void bdelete2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdelete2ActionPerformed
-        // TODO add your handling code here:
+                int row =jTable3.getSelectedRow();
+
+        if (jTable3.getRowCount()>0){
+
+            DefaultTableModel model = (DefaultTableModel)jTable3.getModel();
+            model.removeRow(row);}
     }//GEN-LAST:event_bdelete2ActionPerformed
 
     private void badd2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_badd2ActionPerformed
-        // TODO add your handling code here:
+            DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+
+        model.addRow(new Object[]{Box2.getSelectedItem()});
+        jTable3.setModel(model);
+
+        
+        ArrayList<String> data = new ArrayList<String>();
+        for (int count = 0;count<model.getRowCount();count++){
+        
+        data.add(model.getValueAt(count, 1).toString());
+        
+        }
+        System.out.println(data);
+        
+        //int selectedRow = jTable1.getSelectedRow();
+        String setToTextArea = new String();
+        for (int i=0;i<model.getRowCount();i++){
+        
+        setToTextArea += jTable3.getValueAt(i, 1)+"\n";
+       
+        }
     }//GEN-LAST:event_badd2ActionPerformed
 
     /**
